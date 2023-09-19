@@ -1,0 +1,51 @@
+name: ansible-test
+
+on:
+  pull_request:
+    branches: ["main", "stable", "release/v*"]
+
+jobs:
+
+  build:
+    name: Ansible Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run ansible-lint
+        uses: ansible/ansible-lint@main
+
+  # ----- ----- ----- ----- -----
+
+  test:
+    needs:
+      - build
+    name: Ansible Molecule
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - image: debian
+            tag: bullseye
+          - image: debian
+            tag: latest
+
+          - image: ubuntu
+            tag: focal
+          - image: ubuntu
+            tag: latest
+
+          - image: fedora
+            tag: "38"
+          - image: fedora
+            tag: latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: "${{ github.repository }}"
+
+      - uses: robertdebock/molecule-action@5.0.2
+        with:
+          image: ${{ matrix.config.image }}
+          tag: ${{ matrix.config.tag }}

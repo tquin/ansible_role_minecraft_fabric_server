@@ -7,6 +7,8 @@ Tested on:
   * ✔ Debian Bookworm 12
   * ✔ Fedora 38
 
+# Usage
+
 | Variable | Description | Default |
 | --- | --- | --- |
 | minecraft_user | Linux username that owns and runs the service. Will be created if it doesn't already exist. | `minecraft` |
@@ -23,3 +25,8 @@ Tested on:
 | minecraft_use_allowlist | Control the server setting to use the allowlist file or not. | `true` |
 | minecraft_allowlist | Allowlist/Whitelist of players allowed to join the server. | - `Etho` |
 | mcrcon_pass | Password for mcrcon, which is used for starting, stopping, and backing up the server. You should store this in an Ansible Vault and pass it into the role. | None |
+
+# Todo
+
+- containerise mcrcon
+- containerise fabric server
