@@ -16,8 +16,6 @@ jobs:
 
       - name: Run ansible-lint
         uses: ansible/ansible-lint@main
-        with:
-          targets: "./"
 
   # ----- ----- ----- ----- -----
 
@@ -30,21 +28,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        config:
-          - image: debian
-            tag: bullseye
-
-          - image: ubuntu
-            tag: focal
-
-          - image: fedora
-            tag: "38"
+        scenario:
+          - debian-12
     steps:
       - uses: actions/checkout@v3
         with:
           path: "${{ github.repository }}"
 
-      - uses: robertdebock/molecule-action@5.0.3
+      - uses: gofrolist/molecule-action@v2
         with:
-          image: ${{ matrix.config.image }}
-          tag: ${{ matrix.config.tag }}
+          molecule_options: --base-config molecule/_shared/base.yml
+          molecule_command: test
+          molecule_args: --scenario-name ${{ matrix.scenario }}
