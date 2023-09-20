@@ -1,5 +1,6 @@
 - name: Write minecraft systemd template files
   no_log: true
+  become: yes
   become_user: "{{ minecraft_user }}"
   template:
     src: "{{ item.src }}"

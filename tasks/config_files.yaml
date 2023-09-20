@@ -8,6 +8,7 @@
 
 - name: Write minecraft server template files
   no_log: true
+  become: yes
   become_user: "{{ minecraft_user }}"
   template:
     owner: "{{ minecraft_user }}"
