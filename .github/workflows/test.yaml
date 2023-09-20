@@ -1,6 +1,8 @@
 name: ansible-test
 
 on:
+  push:
+
   pull_request:
     branches: ["main", "stable", "release/v*"]
 
@@ -27,25 +29,18 @@ jobs:
         config:
           - image: debian
             tag: bullseye
-          - image: debian
-            tag: latest
 
           - image: ubuntu
             tag: focal
-          - image: ubuntu
-            tag: latest
 
           - image: fedora
             tag: "38"
-          - image: fedora
-            tag: latest
-
     steps:
       - uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
 
-      - uses: robertdebock/molecule-action@5.0.2
+      - uses: robertdebock/molecule-action@5
         with:
           image: ${{ matrix.config.image }}
           tag: ${{ matrix.config.tag }}

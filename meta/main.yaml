@@ -1,0 +1,25 @@
+---
+galaxy_info:
+  author: tquin
+  role_name: minecraft_fabric_server
+  description: An Ansible role to install a Fabric Minecraft server, complete with a customisable mods list and systemd timers for regular backups.
+  license: MIT
+  company: none
+  min_ansible_version: "2.14"
+
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+    - name: Fedora
+      versions:
+        - "38"
+    - name: Ubuntu
+      versions:
+        - focal
+
+  galaxy_tags:
+    - minecraft
+    - fabric
+
+dependencies: []
