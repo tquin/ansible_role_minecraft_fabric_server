@@ -11,9 +11,15 @@ exclude_paths:
   - .cache
   - .github
   - requirements.yml
+  - tasks/main.yaml
 
 skip_list:
   - yaml[truthy]
+  - package-latest
+  - fqcn-builtins
 
-enable_list:
-  - name[prefix]
+  # Bug: 'undefined' using 'register:'
+  - jinja[invalid]
+
+  # Bug: https://github.com/ansible/ansible-lint/issues/3646
+  - deprecated-bare-vars

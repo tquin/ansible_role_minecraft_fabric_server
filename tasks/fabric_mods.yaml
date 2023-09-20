@@ -4,6 +4,7 @@
     state: directory
     owner: "{{ minecraft_user }}"
     group: "{{ minecraft_user }}"
+    mode: '755'
   loop:
     - { path: "{{ minecraft_dir }}/mods_{{ minecraft_version }}/"}
 
@@ -28,6 +29,7 @@
   get_url:
     url: "{{ item }}"
     dest: "{{ minecraft_dir }}/mods_{{ minecraft_version }}/"
+    mode: '660'
   loop: "{{ mod_versions_url }}"
 
 - name: Create symlink to current mods folder

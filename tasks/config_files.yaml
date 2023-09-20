@@ -4,6 +4,7 @@
     state: directory
     owner: "{{ minecraft_user }}"
     group: "{{ minecraft_user }}"
+    mode: '755'
 
 - name: Write minecraft server template files
   no_log: true
@@ -15,7 +16,7 @@
     mode: '660'
     src: "{{ item.src }}"
     dest: "{{ minecraft_dir }}/{{ item.path }}"
-  with_filetree: templates/server
+  with_community.general.filetree: templates/server/
 
 - name: Add minecraft script x permissions
   file:
@@ -30,17 +31,23 @@
 
 - name: Set SELinux permissions on minecraft scripts
   when: ansible_distribution == 'Fedora'
-  sefcontext:
+  community.general.sefcontext:
     target: "{{ minecraft_dir }}/{{ item }}"
     setype: bin_t
+    state: present
   loop:
     - start.sh
     - stop.sh
     - backup.sh
+  register: selinux
 
-- name: reload SELinux policy for minecraft scripts
-  when: ansible_distribution == 'Fedora'
+- name: Reload SELinux policy for minecraft scripts
+  when:
+    - ansible_distribution == 'Fedora'
+    - selinux.changed
   command: "restorecon -irv {{ minecraft_dir }}/"
+  register: reload_selinux
+  changed_when: reload_selinux.rc != 0
 
 # ----- ----- ----- ----- -----
 

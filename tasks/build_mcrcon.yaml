@@ -4,6 +4,7 @@
     state: directory
     owner: "{{ minecraft_user }}"
     group: "{{ minecraft_user }}"
+    mode: '755'
   loop:
     - { path: "{{ minecraft_dir }}" }
     - { path: "{{ minecraft_dir }}/build_mcrcon" }
@@ -11,18 +12,19 @@
 - name: Clone the latest mcrcon repo
   become_user: "{{ minecraft_user }}"
   git:
-      repo: "https://github.com/Tiiffi/mcrcon"
-      dest: "{{ minecraft_dir }}/build_mcrcon"
-      clone: yes
-      recursive: yes
-      track_submodules: yes
-      force: yes
-      accept_newhostkey: yes
+    repo: "https://github.com/Tiiffi/mcrcon"
+    dest: "{{ minecraft_dir }}/build_mcrcon"
+    version: v0.7.2
+    clone: yes
+    recursive: yes
+    track_submodules: yes
+    force: yes
+    accept_newhostkey: yes
 
 - name: Compile and install mcrcon
-  args:
+  community.general.make:
     chdir: "{{ minecraft_dir }}/build_mcrcon"
-  shell: make && make install
+    target: install
 
 - name: Create mcrcon binary symlink
   become_user: "{{ minecraft_user }}"
