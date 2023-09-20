@@ -41,6 +41,8 @@ jobs:
             tag: "38"
     steps:
       - uses: actions/checkout@v3
+        with:
+          path: "${{ github.repository }}"
 
       - uses: robertdebock/molecule-action@5.0.3
         with:
