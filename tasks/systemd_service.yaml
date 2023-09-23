@@ -1,6 +1,4 @@
 - name: Write minecraft systemd template files
-  become: yes
-  become_user: "{{ minecraft_user }}"
   template:
     src: "{{ item.src }}"
     dest: "/etc/systemd/system/{{ item.path }}"
