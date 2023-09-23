@@ -1,14 +1,7 @@
 ---
 scenario:
   test_sequence:
-    - dependency
-    - syntax
-    - create
-    - prepare
     - converge
-    - idempotence
-    - verify
-    - destroy
 dependency:
   name: galaxy
   options:
@@ -28,6 +21,6 @@ provisioner:
     connection:
       pipelining: true
   playbooks:
-    converge: ../_shared/converge.yml
+    converge: ../_shared/converge.yaml
 verifier:
   name: ansible
