@@ -15,7 +15,7 @@ ENV {{ var }} {{ value }}
 {% endif %}
 
 RUN if [ $(command -v apt-get) ]; then \
-        if grep -q "Debian GNU/Linux 11" /etc/os-release; then \
+        if grep -q "Debian GNU/Linux" /etc/os-release; then \
             apt-get update && apt-get install -y python sudo bash ca-certificates iproute2 python-apt-common && apt-get clean; \
         else \
             apt-get update && apt-get install -y python sudo bash ca-certificates iproute2 python-apt && apt-get clean; \
