@@ -1,4 +1,4 @@
-- name: mcrcon package dependencies
+- name: Install mcrcon package dependencies
   package:
     name:
       - git
