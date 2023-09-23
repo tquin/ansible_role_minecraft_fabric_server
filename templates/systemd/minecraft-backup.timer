@@ -2,7 +2,7 @@
 Description=Minecraft Server backups
 
 [Timer] 
-OnCalendar=*-*-* 3:00:00
+OnCalendar=*-*-* {[ minecraft_backup_time ]}
 Unit=minecraft-backup.service 
 
 [Install] 

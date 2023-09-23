@@ -20,6 +20,7 @@ Tested on:
 | minecraft_motd | Message of the day. Text to display on the multiplayer server list. | `A Minecraft Server` |
 | minecraft_difficulty | Should be one of: `peaceful`, `easy`, `normal` or `hard`. | `hard` |
 | minecraft_ram_mb | RAM amount to allocate to the server, in MiB. | `1024` (1GiB) |
+| minecraft_backup_time | Time of day to invoke backup script, in local timezone. | `3:00:00` (3AM) |
 | minecraft_mods | List of mods from Modrinth to install. The defaults here are vanilla with performance optimisations. You can find the slug value from the mod page url, eg: `modrinth.com/mods/<slug>` | - `fabric-api`<br/>- `sodium`<br/>- `lithium`<br/>- `fabric-language-kotlin`<br/>- `indium` |
 | minecraft_ops | List of players with op/mod/admin permissions. | - `Etho` |
 | minecraft_use_allowlist | Control the server setting to use the allowlist file or not. | `true` |
