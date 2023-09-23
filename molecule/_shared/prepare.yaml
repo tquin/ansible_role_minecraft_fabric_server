@@ -13,3 +13,8 @@
       pip:
         name: netaddr
       become: false
+
+    - name: Install jmespath dependency on controlling host
+      pip:
+        name: jmespath
+      become: false
