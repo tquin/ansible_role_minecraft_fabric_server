@@ -38,3 +38,5 @@ jobs:
           molecule_options: --base-config molecule/_shared/base.yaml
           molecule_args: --scenario-name ${{ matrix.scenario }}
           molecule_working_dir: ${{ github.repository }}
+        env:
+          MOLECULE_GLOB: 'molecule/*/molecule.yaml'
