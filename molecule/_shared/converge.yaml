@@ -4,4 +4,4 @@
   become: yes
   gather_facts:
   roles:
-    - role: minecraft_fabric_server
+    - role: tquin.minecraft_fabric_server
