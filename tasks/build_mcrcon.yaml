@@ -2,6 +2,7 @@
   package:
     name:
       - git
+      - make
 
 - name: Create required mcrcon directories
   file:
