@@ -14,7 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: "Publish collection on galaxy"
-        uses: ansible/ansible-publish-action@v1.0.0
+      - name: Publish role to galaxy
+        uses: robertdebock/galaxy-action@1.2.0
         with:
-          api_key: ${{ secrets.ANSIBLE_GALAXY_API_KEY }}
+          galaxy_api_key: ${{ secrets.ANSIBLE_GALAXY_API_KEY }}
+          git_branch: main
