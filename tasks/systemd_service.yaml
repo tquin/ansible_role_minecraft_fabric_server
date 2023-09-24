@@ -1,0 +1,22 @@
+- name: Write minecraft systemd template files
+  template:
+    src: "{{ item.src }}"
+    dest: "/etc/systemd/system/{{ item.path }}"
+    mode: '660'
+  with_community.general.filetree: templates/systemd/
+
+- name: Enable and start minecraft service
+  systemd:
+    daemon_reload: true
+    enabled: true
+    state: started
+    name: minecraft.service
+
+- name: Enable minecraft backup service and timer
+  systemd:
+    daemon_reload: true
+    enabled: true
+    name: "{{ item }}"
+  loop:
+    - minecraft-backup.service
+    - minecraft-backup.timer
