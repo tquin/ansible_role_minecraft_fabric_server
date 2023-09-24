@@ -31,6 +31,10 @@
 - name: Compile and install mcrcon
   community.general.make:
     chdir: "{{ minecraft_dir }}/build_mcrcon"
+
+- name: Install mcrcon
+  community.general.make:
+    chdir: "{{ minecraft_dir }}/build_mcrcon"
     target: install
 
 - name: Create mcrcon binary symlink
