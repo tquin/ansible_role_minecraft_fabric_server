@@ -3,6 +3,7 @@
     name:
       - git
       - make
+      - build-essential
 
 - name: Create required mcrcon directories
   file:
@@ -28,14 +29,10 @@
     force: yes
     accept_newhostkey: yes
 
-- name: Compile and install mcrcon
+- name: Compile mcrcon
   community.general.make:
+    make: /usr/bin/make # which binary to use
     chdir: "{{ minecraft_dir }}/build_mcrcon"
-
-- name: Install mcrcon
-  community.general.make:
-    chdir: "{{ minecraft_dir }}/build_mcrcon"
-    target: install
 
 - name: Create mcrcon binary symlink
   become: yes
