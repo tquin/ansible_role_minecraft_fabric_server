@@ -62,5 +62,3 @@
   loop:
     - { dest: "ops.json", content: "{{ op_player_json_uuid }}" }
     - { dest: "whitelist.json", content: "{{ allowlist_player_json_uuid }}" }
-  # Skip this task in molecule's idempotent check
-  changed_when: "'molecule-idempotence-notest' not in ansible_skip_tags"
