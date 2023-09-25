@@ -22,9 +22,6 @@
     updated_item: "{ 'uuid': '{{ item.id | regex_replace('(\\S{8})(\\S{4})(\\S{4})(\\S{4})(.*)', '\\1-\\2-\\3-\\4-\\5') }}', 'name': '{{ item.name }}' }"
   loop: "{{ allowlist_player_json_id }}"
 
-- debug:
-    var: allowlist_player_json_uuid
-
 # ----- ----- ----- ----- -----
 # OP (Admins)
 # ----- ----- ----- ----- -----
@@ -48,9 +45,6 @@
   vars:
     updated_item: "{ 'uuid': '{{ item.id | regex_replace('(\\S{8})(\\S{4})(\\S{4})(\\S{4})(.*)', '\\1-\\2-\\3-\\4-\\5') }}', 'name': '{{ item.name }}' }"
   loop: "{{ op_player_json_id }}"
-
-- debug:
-    var: op_player_json_uuid
 
 # ----- ----- ----- ----- -----
 # Output

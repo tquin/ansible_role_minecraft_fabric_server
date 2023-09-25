@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  become: yes
+  gather_facts:
+  roles:
+    - role: tquin.minecraft_fabric_server

@@ -10,6 +10,7 @@ minecraft_motd: "A Minecraft Server"
 minecraft_difficulty: "hard"
 
 minecraft_ram_mb: 1024
+minecraft_backup_time: "3:00:00" # 3AM local time
 
 # This should be the 'slug' from the URL, eg: modrinth.com/mods/<slug>
 minecraft_mods:

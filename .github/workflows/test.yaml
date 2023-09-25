@@ -1,0 +1,42 @@
+name: ansible-test
+
+on:
+  push:
+
+  pull_request:
+    branches: ["main", "stable", "release/v*"]
+
+jobs:
+
+  build:
+    name: Ansible Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run ansible-lint
+        uses: ansible/ansible-lint@main
+
+  # ----- ----- ----- ----- -----
+
+  test:
+    needs:
+      - build
+    name: Ansible Molecule
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        scenario:
+          - debian-12
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: gofrolist/molecule-action@v2
+        with:
+          molecule_options: --base-config molecule/_shared/base.yaml
+          molecule_args: --scenario-name ${{ matrix.scenario }}
+          molecule_working_dir: ${{ github.repository }}
+        env:
+          MOLECULE_GLOB: 'molecule/*/molecule.yaml'

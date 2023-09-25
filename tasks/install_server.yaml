@@ -4,11 +4,13 @@
 
 # ----- ----- ----- ----- -----
 
-- when: ansible_distribution == 'Fedora'
+- name: Fedora Java Package variable
+  when: ansible_distribution == 'Fedora'
   set_fact:
     java_package: java-17-openjdk
 
-- when: (ansible_distribution == 'Ubuntu') or (ansible_distribution == 'Debian')
+- name: Debian-based Java Package variable
+  when: (ansible_distribution == 'Ubuntu') or (ansible_distribution == 'Debian')
   set_fact:
     java_package: openjdk-17-jdk
 
@@ -25,14 +27,18 @@
     state: directory
     owner: "{{ minecraft_user }}"
     group: "{{ minecraft_user }}"
+    mode: '755'
 
 - name: Download latest Fabric JAR
+  become: yes
   become_user: "{{ minecraft_user }}"
   get_url:
     url: "https://meta.fabricmc.net/v2/versions/loader/{{ minecraft_version }}/{{ minecraft_fabric_version }}/server/jar"
     dest: "{{ minecraft_dir }}/jar_versions/fabric-{{ minecraft_version }}.jar"
+    mode: '660'
 
 - name: Create symlink to minecraft server.jar
+  become: yes
   become_user: "{{ minecraft_user }}"
   file:
     src: "{{ minecraft_dir }}/jar_versions/fabric-{{ minecraft_version }}.jar"

@@ -4,6 +4,7 @@
     state: directory
     owner: "{{ minecraft_user }}"
     group: "{{ minecraft_user }}"
+    mode: '755'
   loop:
     - { path: "{{ minecraft_dir }}/mods_{{ minecraft_version }}/"}
 
@@ -24,13 +25,16 @@
     _query: "results[*].json[0].files[?primary].url"
 
 - name: Download mods to specific version directory
+  become: yes
   become_user: "{{ minecraft_user }}"
   get_url:
     url: "{{ item }}"
     dest: "{{ minecraft_dir }}/mods_{{ minecraft_version }}/"
+    mode: '660'
   loop: "{{ mod_versions_url }}"
 
 - name: Create symlink to current mods folder
+  become: yes
   become_user: "{{ minecraft_user }}"
   file:
     src: "{{ minecraft_dir }}/mods_{{ minecraft_version }}/"
