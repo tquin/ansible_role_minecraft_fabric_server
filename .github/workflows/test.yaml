@@ -2,9 +2,14 @@ name: ansible-test
 
 on:
   push:
+    branches:
+      - '!main'
 
   pull_request:
-    branches: ["main", "stable", "release/v*"]
+    branches:
+      - "main"
+      - "stable"
+      - "release/v*"
 
 jobs:
 
