@@ -2,8 +2,19 @@
   package:
     name:
       - git
-      - make
-      - build-essential
+
+- name: Install mcrcon package dependencies (Debian-based)
+  when: (ansible_distribution == 'Ubuntu') or (ansible_distribution == 'Debian')
+  package:
+    name: build-essential
+
+- name: Install mcrcon package dependencies (Fedora)
+  when: ansible_distribution == 'Fedora'
+  dnf:
+    name: '@Development tools'
+    state: present
+
+# ----- ----- ----- ----- -----
 
 - name: Create required mcrcon directories
   file:
