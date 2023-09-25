@@ -31,7 +31,7 @@
 # ----- ----- ----- ----- -----
 
 - name: Set SELinux permissions on minecraft scripts
-  when: ansible_distribution == 'Fedora'
+  when: ansible_facts.selinux.status == 'enabled'
   community.general.sefcontext:
     target: "{{ minecraft_dir }}/{{ item }}"
     setype: bin_t
@@ -44,7 +44,7 @@
 
 - name: Reload SELinux policy for minecraft scripts
   when:
-    - ansible_distribution == 'Fedora'
+    - ansible_facts.selinux.status == 'enabled'
     - selinux.changed
   command: "restorecon -irv {{ minecraft_dir }}/"
   register: reload_selinux
