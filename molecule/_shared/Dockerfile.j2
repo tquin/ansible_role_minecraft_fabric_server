@@ -19,6 +19,9 @@ RUN if [ $(command -v apt-get) ]; then \
         elif grep -q "Debian GNU/Linux 12" /etc/os-release; then \
             apt-get update && apt-get install -y python3 python-is-python3 sudo bash ca-certificates iproute2 python-apt-common && apt-get clean; \
         
+        elif grep -q "Ubuntu 22.04" /etc/os-release; then
+            apt-get update && apt-get install -y python3 python-is-python3 sudo bash ca-certificates iproute2 python-apt-common && apt-get clean; \
+
         else \
             apt-get update && apt-get install -y python sudo bash ca-certificates iproute2 python-apt && apt-get clean; \
         fi \

@@ -9,6 +9,14 @@
         name: unzip
       become: true
 
+    - name: Install SELinux packages
+      when: ansible_distribution == 'Fedora'
+      package:
+        name: 
+          - python3-libselinux
+          - python3-policycoreutils
+      become: true
+
     - name: Install netaddr dependency on controlling host
       pip:
         name: netaddr
