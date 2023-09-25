@@ -30,6 +30,8 @@ jobs:
       matrix:
         scenario:
           - debian-12
+          - ubuntu-22.04
+          - fedora-38
     steps:
       - uses: actions/checkout@v3
 
