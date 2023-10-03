@@ -8,7 +8,7 @@ Nice=1
 SuccessExitStatus=0 1
 WorkingDirectory={{ minecraft_dir }}
 ExecStart={{ minecraft_dir }}/start.sh
-ExecStop={{ minecraft_dir }}/stop.sh
+ExecStop=docker exec -it mcrcon run stop
 
 [Install]
 WantedBy=multi-user.target

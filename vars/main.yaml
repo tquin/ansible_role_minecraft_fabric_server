@@ -26,5 +26,8 @@ minecraft_allowlist:
 minecraft_ops:
   - Etho
 
+minecraft_backup_dir: "/srv/minecraft/backups"
+minecraft_backup_retention_mins: 10080 # 7 days
+
 # Should be passed in to the role from a vault
 mcrcon_pass: ""

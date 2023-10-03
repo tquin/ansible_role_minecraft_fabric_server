@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User={{ minecraft_user }}
 WorkingDirectory={{ minecraft_dir }}
-ExecStart={{ minecraft_dir }}/backup.sh
+ExecStart=docker exec -it mcrcon backup
 
 [Install]
 WantedBy=multi-user.target
