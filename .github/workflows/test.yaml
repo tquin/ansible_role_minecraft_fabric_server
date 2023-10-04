@@ -2,14 +2,16 @@ name: ansible-test
 
 on:
   push:
-    branches:
-      - '!main'
+    branches-ignore:
+      - 'main'
 
   pull_request:
     branches:
       - "main"
       - "stable"
       - "release/v*"
+
+  workflow_dispatch:
 
 jobs:
 

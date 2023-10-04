@@ -25,6 +25,8 @@ Tested on:
 | minecraft_ops | List of players with op/mod/admin permissions. | - `Etho` |
 | minecraft_use_allowlist | Control the server setting to use the allowlist file or not. | `true` |
 | minecraft_allowlist | Allowlist/Whitelist of players allowed to join the server. | - `Etho` |
+| minecraft_backup_dir | Where to store backup files. | `/srv/minecraft/backups` |
+| minecraft_backup_retention_mins | How long to keep old backups for before purging them, in **minutes.** The default value is 7 days. | `10080` |
 | mcrcon_pass | Password for mcrcon, which is used for starting, stopping, and backing up the server. You should store this in an Ansible Vault and pass it into the role. | None |
 
 # Todo
