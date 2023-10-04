@@ -20,9 +20,10 @@
   loop:
     - "{{ minecraft_user }}"
 
-- name: Install requests python package
+- name: Install python pip packages
   pip:
     name:
+      - setuptools
       - requests
       - docker
 
