@@ -20,7 +20,6 @@
   loop:
     - "{{ minecraft_user }}"
 
-
 - name: Install mcrcon through Docker
   community.docker.docker_container:
     name: mcrcon
@@ -33,7 +32,7 @@
     restart_policy: "no"
     network_mode: "bridge"
     env:
-      TZ: "{{ time_zone }}"
+      TZ: "{{ minecraft_time_zone }}"
       PUID: "{{ username_uid }}"
       PGID: "{{ username_guid }}"
       RCON_SERVER: 127.0.0.1

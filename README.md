@@ -27,6 +27,7 @@ Tested on:
 | minecraft_allowlist | Allowlist/Whitelist of players allowed to join the server. | - `Etho` |
 | minecraft_backup_dir | Where to store backup files. | `/srv/minecraft/backups` |
 | minecraft_backup_retention_mins | How long to keep old backups for before purging them, in **minutes.** The default value is 7 days. | `10080` |
+| minecraft_time_zone | Timezone used for backup file naming. | `Australia/Victoria` |
 | mcrcon_pass | Password for mcrcon, which is used for starting, stopping, and backing up the server. You should store this in an Ansible Vault and pass it into the role. | None |
 
 # Todo
