@@ -22,7 +22,7 @@
 
 - name: Install requests python package
   pip:
-    name: 
+    name:
       - requests
 
 - name: Install mcrcon through Docker
