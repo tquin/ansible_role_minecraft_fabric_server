@@ -20,6 +20,11 @@
   loop:
     - "{{ minecraft_user }}"
 
+- name: Install requests python package
+  pip:
+    name: 
+      - requests
+
 - name: Install mcrcon through Docker
   community.docker.docker_container:
     name: mcrcon
