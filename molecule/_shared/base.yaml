@@ -12,6 +12,7 @@ scenario:
 dependency:
   name: galaxy
   options:
+    role-file: requirements.yaml
     requirements-file: requirements.yaml
 driver:
   name: docker

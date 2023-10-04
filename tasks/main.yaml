@@ -3,5 +3,4 @@
 - include_tasks: player_lists.yaml
 - include_tasks: fabric_mods.yaml
 - include_tasks: systemd_service.yaml
-#- include_tasks: install_docker.yaml
 - include_tasks: build_mcrcon.yaml
