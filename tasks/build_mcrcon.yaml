@@ -8,6 +8,19 @@
   loop:
     - { path: "{{ minecraft_backup_dir }}" }
 
+- name: Get UID and GUID
+  getent:
+    database: passwd
+    key: "{{ minecraft_user }}"
+
+- name: Set UID/GUID variables
+  set_fact:
+    username_uid: "{{ getent_passwd[item].1 }}"
+    username_guid: "{{ getent_passwd[item].2 }}"
+  loop:
+    - "{{ minecraft_user }}"
+
+
 - name: Install mcrcon through Docker
   community.docker.docker_container:
     name: mcrcon
