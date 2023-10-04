@@ -25,4 +25,5 @@ galaxy_info:
     - minecraft
     - fabric
 
-dependencies: []
+dependencies:
+  - role: geerlingguy.docker

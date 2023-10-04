@@ -2,10 +2,18 @@
 
 An Ansible role to install a Fabric Minecraft server, complete with a customisable mods list and systemd timers for regular backups.
 
-Tested on:
-  * ✔ Ubuntu Jammy 22.04
-  * ✔ Debian Bookworm 12
-  * ✔ Fedora 38
+# Supported
+
+- ✔ Ubuntu Jammy 22.04
+- ✔ Debian Bookworm 12
+- ✔ Fedora 38
+
+# Dependencies
+
+- `community.general`
+  - Used for various functionality such as json_query, filetree, and docker_container.
+- `geerlingguy.docker`
+  - Used to install docker to run mcrcon container.
 
 # Usage
 
@@ -29,8 +37,3 @@ Tested on:
 | minecraft_backup_retention_mins | How long to keep old backups for before purging them, in **minutes.** The default value is 7 days. | `10080` |
 | minecraft_time_zone | Timezone used for backup file naming. | `Australia/Victoria` |
 | mcrcon_pass | Password for mcrcon, which is used for starting, stopping, and backing up the server. You should store this in an Ansible Vault and pass it into the role. | None |
-
-# Todo
-
-- containerise mcrcon
-- containerise fabric server
