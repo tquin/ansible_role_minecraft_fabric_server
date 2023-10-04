@@ -24,6 +24,7 @@
   pip:
     name:
       - requests
+      - docker
 
 - name: Install mcrcon through Docker
   community.docker.docker_container:
