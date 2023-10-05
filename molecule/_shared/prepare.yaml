@@ -9,20 +9,11 @@
         name: unzip
       become: true
 
-    - name: Install SELinux packages
-      when: ansible_distribution == 'Fedora'
-      package:
+    - name: Install pip dependencies on controlling host
+      become: false
+      pip:
         name: 
-          - python3-libselinux
-          - python3-policycoreutils
-      become: true
-
-    - name: Install netaddr dependency on controlling host
-      pip:
-        name: netaddr
-      become: false
-
-    - name: Install jmespath dependency on controlling host
-      pip:
-        name: jmespath
-      become: false
+          - netaddr
+          - jmespath
+          - setuptools
+          - requests
