@@ -21,9 +21,12 @@
     - "{{ minecraft_user }}"
 
 - name: Install python pip packages
+  become: yes
+  become_user: "{{ minecraft_user }}"
   pip:
     name:
       - setuptools
+      - virtualenv
       - requests
 
 - name: Install mcrcon through Docker

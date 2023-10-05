@@ -16,4 +16,5 @@
           - netaddr
           - jmespath
           - setuptools
+          - virtualenv
           - requests
