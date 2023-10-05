@@ -7,9 +7,17 @@
     - name: Install OS packages
       become: true
       package:
-        name: 
+        name:
           - unzip
           - python3-setuptools
+          - python3-requests
+
+    - name: Install OS packages (Debian-based)
+      become: true
+      when: ansible_os_family == 'Debian'
+      package:
+        name:
+          - python3-pkg-resources
 
     - name: Install pip dependencies on controlling host
       pip:
