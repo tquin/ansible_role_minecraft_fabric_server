@@ -20,11 +20,6 @@
   loop:
     - "{{ minecraft_user }}"
 
-- name: Install python pip setuptools
-  pip:
-    name:
-      - setuptools
-
 - name: Install python pip packages
   become: yes
   become_user: "{{ minecraft_user }}"

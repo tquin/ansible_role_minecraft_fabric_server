@@ -5,14 +5,11 @@
 
   tasks:
     - name: Install OS packages
-      package:
-        name: unzip
       become: true
-
-    - name: Install pip setuptools on controlling host
-      pip:
-        name:
-          - setuptools
+      package:
+        name: 
+          - unzip
+          - python3-setuptools
 
     - name: Install pip dependencies on controlling host
       pip:
