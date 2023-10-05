@@ -9,12 +9,15 @@
         name: unzip
       become: true
 
+    - name: Install pip setuptools on controlling host
+      pip:
+        name:
+          - setuptools
+
     - name: Install pip dependencies on controlling host
-      become: false
       pip:
         name: 
           - netaddr
           - jmespath
-          - setuptools
           - virtualenv
           - requests
