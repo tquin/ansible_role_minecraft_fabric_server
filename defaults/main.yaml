@@ -25,6 +25,7 @@ minecraft_allowlist:
   - Etho
 minecraft_ops:
   - Etho
+minecraft_ops_level: 4
 
 # Should be passed in to the role from a vault
 mcrcon_pass: ""
