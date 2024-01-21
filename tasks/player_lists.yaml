@@ -19,7 +19,9 @@
   set_fact:
     allowlist_player_json_uuid: "{{ allowlist_player_json_uuid | default([]) + [updated_item] }}"
   vars:
-    updated_item: "{ 'uuid': '{{ item.id | regex_replace('(\\S{8})(\\S{4})(\\S{4})(\\S{4})(.*)', '\\1-\\2-\\3-\\4-\\5') }}', 'name': '{{ item.name }}' }"
+    updated_item: >-
+      { 'uuid': '{{ item.id | regex_replace('(\\S{8})(\\S{4})(\\S{4})(\\S{4})(.*)', '\\1-\\2-\\3-\\4-\\5') }}',
+        'name': '{{ item.name }}' }
   loop: "{{ allowlist_player_json_id }}"
 
 # ----- ----- ----- ----- -----
@@ -43,7 +45,10 @@
   set_fact:
     op_player_json_uuid: "{{ op_player_json_uuid | default([]) + [updated_item] }}"
   vars:
-    updated_item: "{ 'uuid': '{{ item.id | regex_replace('(\\S{8})(\\S{4})(\\S{4})(\\S{4})(.*)', '\\1-\\2-\\3-\\4-\\5') }}', 'name': '{{ item.name }}' }"
+    updated_item: >-
+      { 'uuid': '{{ item.id | regex_replace('(\\S{8})(\\S{4})(\\S{4})(\\S{4})(.*)', '\\1-\\2-\\3-\\4-\\5') }}',
+        'name': '{{ item.name }}',
+        'level': {{ minecraft_ops_level }} }
   loop: "{{ op_player_json_id }}"
 
 # ----- ----- ----- ----- -----
