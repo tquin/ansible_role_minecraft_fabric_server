@@ -13,8 +13,8 @@ Tested on:
 | --- | --- | --- |
 | minecraft_user | Linux username that owns and runs the service. Will be created if it doesn't already exist. | `minecraft` |
 | minecraft_dir | Directory to install the server in. | `/srv/minecraft` |
-| minecraft_version | Minecraft version to install. Updates are easily supported by symlinking the latest executable. | `1.20.1` |
-| minecraft_fabric_version | Minecraft Fabric version to install. This shouldn't need to change. | `0.14.22/0.11.2` |
+| minecraft_version | Minecraft version to install. Updates are easily supported by symlinking the latest executable. | `1.20.4` |
+| minecraft_fabric_version | Minecraft Fabric version to install. This shouldn't need to change. | `0.15.6/1.0.0` |
 | minecraft_world_name | Name of the save file. | `my_minecraft_world` |
 | minecraft_seed | Seed to use for world generation. The default is [a lovely secluded lake.](https://www.chunkbase.com/apps/seed-map#8624896) | `8624896` |
 | minecraft_motd | Message of the day. Text to display on the multiplayer server list. | `A Minecraft Server` |
