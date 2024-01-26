@@ -48,7 +48,8 @@
     updated_item: >-
       { 'uuid': '{{ item.id | regex_replace('(\\S{8})(\\S{4})(\\S{4})(\\S{4})(.*)', '\\1-\\2-\\3-\\4-\\5') }}',
         'name': '{{ item.name }}',
-        'level': {{ minecraft_ops_level }} }
+        'level': {{ minecraft_ops_level }},
+        'bypassesPlayerLimit': false }
   loop: "{{ op_player_json_id }}"
 
 # ----- ----- ----- ----- -----
