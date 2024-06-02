@@ -1,6 +1,6 @@
 - name: Create minecraft backups directory
   file:
-    path: "{{ minecraft_dir }}/backups/"
+    path: "{{ minecraft_dir }}/backups/{{ minecraft_world_name }}/"
     state: directory
     owner: "{{ minecraft_user }}"
     group: "{{ minecraft_user }}"
