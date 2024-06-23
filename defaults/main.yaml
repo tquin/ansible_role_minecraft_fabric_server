@@ -1,5 +1,6 @@
 minecraft_user: "minecraft"
 minecraft_dir: "/srv/minecraft"
+minecraft_ram_mb: 1024
 
 minecraft_version: "1.20.4"
 minecraft_fabric_version: "0.15.6/1.0.0" # Loader / Installer
@@ -9,8 +10,10 @@ minecraft_seed: "8624896"
 minecraft_motd: "A Minecraft Server"
 minecraft_difficulty: "hard"
 
-minecraft_ram_mb: 1024
 minecraft_backup_time: "3:00:00" # 3AM local time
+minecraft_backup_dir: "/srv/minecraft/backups"
+minecraft_backup_removal_enabled: true
+minecraft_backup_retention_days: 7
 
 # This should be the 'slug' from the URL, eg: modrinth.com/mods/<slug>
 minecraft_mods:
