@@ -12,11 +12,15 @@
     state: started
     name: minecraft.service
 
-- name: Enable minecraft backup service and timer
+- name: Enable minecraft backup services and timers
   systemd:
     daemon_reload: true
     enabled: true
     name: "{{ item }}"
   loop:
-    - minecraft-backup.service
-    - minecraft-backup.timer
+    - minecraft-backup-daily.timer
+    - minecraft-backup-weekly.timer
+    - minecraft-backup-monthly.timer
+    - minecraft-backup@alpha.service
+    - minecraft-backup@beta.service
+    - minecraft-backup@gamma.service

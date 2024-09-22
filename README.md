@@ -5,7 +5,7 @@ An Ansible role to install a Fabric Minecraft server, complete with a customisab
 Tested on:
   * ✔ Ubuntu Jammy 22.04
   * ✔ Debian Bookworm 12
-  * ✔ Fedora 38
+  * ✔ Fedora 40
 
 # Usage
 
@@ -20,10 +20,9 @@ Tested on:
 | minecraft_motd | Message of the day. Text to display on the multiplayer server list. | `A Minecraft Server` |
 | minecraft_difficulty | Should be one of: `peaceful`, `easy`, `normal` or `hard`. | `hard` |
 | minecraft_ram_mb | RAM amount to allocate to the server, in MiB. | `1024` (1GiB) |
-| minecraft_backup_time | Time of day to invoke backup script, in local timezone. | `3:00:00` (3AM) |
+| minecraft_backup_time | Time of day to invoke backup script, in local timezone. Actual times will vary slightly to stagger interval schedules. | `3:00:00` (3AM) |
 | minecraft_backup_dir | Where to save world backups. | `/srv/minecraft/backups` |
-| minecraft_backup_removal_enabled | Whether to remove old backups or keep them forever. Must be one of: `true`, `false` | `true` |
-| minecraft_backup_retention_days | How long to keep backup files before removing them. Must be an integer number of days. | `7` |
+| minecraft_backup_retention | How long to keep backup files before removing them. A dictionary of days, weeks, and months to retain. | `minecraft_backup_retention: {days: 7, weeks: 4, months: 120}` |
 | minecraft_mods | List of mods from Modrinth to install. The defaults here are vanilla with performance optimisations. You can find the slug value from the mod page url, eg: `modrinth.com/mods/<slug>` | - `fabric-api`<br/>- `sodium`<br/>- `lithium`<br/>- `fabric-language-kotlin`<br/>- `indium` |
 | minecraft_ops | List of players with op/mod/admin permissions. | - `Etho` |
 | minecraft_ops_level | The [Permission level](https://minecraft.wiki/w/Permission_level) assigned to ops users. Controls what commands an op user can run. | `4` |

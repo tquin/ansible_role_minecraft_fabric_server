@@ -1,0 +1,9 @@
+[Unit] 
+Description=Minecraft Server backups
+
+[Timer]
+OnCalendar=Sun *-*-* {{ minecraft_backup_time_weekly }}
+Unit=minecraft-backup@beta.service
+
+[Install] 
+WantedBy=basic.target

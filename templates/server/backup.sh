@@ -1,9 +1,25 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -eu
 
-level_name=$(<.world.name)
-mcrcon_pass=$(<.mcrcon.pass)
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --interval*|-i*)
+        if [[ "$1" != *=* ]]; then shift; fi # Value is next arg if no `=`
+        RSNAPSHOT_INTERVAL="${1#*=}"
+        ;;
+    esac
+    shift
+done
+
+
+if [ -z ${RSNAPSHOT_INTERVAL:?x} ]; then 
+    echo "err: missing arg: --interval"
+    exit 1
+fi
+
 minecraft_dir="{{ minecraft_dir }}"
 minecraft_backup_dir="{{ minecraft_backup_dir }}"
+mcrcon_pass=$(<$minecraft_dir/.mcrcon.pass)
 
 function rcon {
   $minecraft_dir/mcrcon -H 127.0.0.1 -P 25575 -p "$mcrcon_pass" "$1"
@@ -11,13 +27,10 @@ function rcon {
 
 rcon "save-off"
 
-rcon "save-all"
+rcon "save-all flush"
 
-tar -cvpzf "$minecraft_backup_dir/$level_name/backup-$(date +%F-%H-%M).tar.gz" "$minecraft_dir/$level_name/"
+/usr/bin/rsnapshot \
+    -c {{ minecraft_dir }}/rsnapshot.conf \
+    $RSNAPSHOT_INTERVAL
 
 rcon "save-on"
-
-## Delete older backups
-if [ "{{ minecraft_backup_removal_enabled }}" = "true" ]; then
-  find "$minecraft_backup_dir/$level_name" -type f -mtime +{{ minecraft_backup_retention_days }} -name '*.gz' -delete
-fi

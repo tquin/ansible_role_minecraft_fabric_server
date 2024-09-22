@@ -39,6 +39,7 @@
     track_submodules: yes
     force: yes
     accept_newhostkey: yes
+    depth: 1
 
 - name: Compile mcrcon
   community.general.make:
