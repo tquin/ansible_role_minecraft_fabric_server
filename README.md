@@ -5,7 +5,7 @@ An Ansible role to install a Fabric Minecraft server, complete with a customisab
 Tested on:
   * ✔ Ubuntu Jammy 22.04
   * ✔ Debian Bookworm 12
-  * ✔ Fedora 38
+  * ✔ Fedora 40
 
 # Usage
 
