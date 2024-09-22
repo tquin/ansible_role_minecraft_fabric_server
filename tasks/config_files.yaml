@@ -6,8 +6,28 @@
     group: "{{ minecraft_user }}"
     mode: '755'
 
+# ----- ----- ----- ----- -----
+
+- set_fact:
+    minecraft_backup_time_daily: >-
+      {{
+        (minecraft_backup_time | to_datetime("%H:%M:%S"))
+        - ("03" | to_datetime("%M"))
+      }}
+    minecraft_backup_time_weekly: >-
+      {{
+        (minecraft_backup_time | to_datetime("%H:%M:%S"))
+        - ("02" | to_datetime("%M"))
+      }}
+    minecraft_backup_time_monthly: >-
+      {{
+        (minecraft_backup_time | to_datetime("%H:%M:%S"))
+        - ("01" | to_datetime("%M"))
+      }}
+
+# ----- ----- ----- ----- -----
+
 - name: Write minecraft server template files
-  no_log: true
   become: yes
   become_user: "{{ minecraft_user }}"
   template:
@@ -63,4 +83,3 @@
     mode: '660'
   loop:
     - { dest: ".mcrcon.pass", content: "{{ mcrcon_pass }}" }
-    - { dest: ".world.name", content: "{{ minecraft_world_name }}" }

@@ -4,19 +4,34 @@
 
 # ----- ----- ----- ----- -----
 
-- name: Fedora Java Package variable
+- name: Fedora Java package
   when: ansible_distribution == 'Fedora'
-  set_fact:
-    java_package: java-17-openjdk
-
-- name: Debian-based Java Package variable
-  when: (ansible_distribution == 'Ubuntu') or (ansible_distribution == 'Debian')
-  set_fact:
-    java_package: openjdk-17-jdk
-
-- name: "Install Java environment {{ java_package }}"
   package:
-    name: "{{ java_package }}"
+    name: java-21-openjdk
+    state: latest
+
+- name: Ubuntu Java package
+  when: ansible_distribution == 'Ubuntu'
+  package:
+    name: openjdk-21-jdk
+    state: latest
+
+# not available in deb stable repo
+- name: Debian Java package
+  when: ansible_distribution == 'Debian'
+  block:
+    - get_url:
+        url: https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
+        dest: /tmp/jdk-21_linux-x64_bin.deb
+
+    - apt:
+        deb: /tmp/jdk-21_linux-x64_bin.deb
+
+# ----- ----- ----- ----- -----
+
+- name: Install rsnapshot
+  package:
+    name: rsnapshot
     state: latest
 
 # ----- ----- ----- ----- -----

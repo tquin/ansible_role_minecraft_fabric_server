@@ -1,0 +1,10 @@
+[Unit] 
+Description=Minecraft Server backups
+
+[Timer]
+OnCalendar=Sun *-*-01 {{ minecraft_backup_time_monthly }}
+Unit=minecraft-backup@gamma.service
+
+[Install] 
+WantedBy=basic.target
+

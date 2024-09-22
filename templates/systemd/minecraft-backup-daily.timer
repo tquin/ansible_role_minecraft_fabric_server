@@ -2,8 +2,8 @@
 Description=Minecraft Server backups
 
 [Timer]
-OnCalendar=*-*-* {{ minecraft_backup_time }}
-Unit=minecraft-backup.service 
+OnCalendar=*-*-* {{ minecraft_backup_time_daily }}
+Unit=minecraft-backup@alpha.service
 
 [Install] 
 WantedBy=basic.target
