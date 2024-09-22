@@ -8,7 +8,8 @@
 
 # ----- ----- ----- ----- -----
 
-- set_fact:
+- name: Stagger backup timers to avoid interval collision
+  set_fact:
     minecraft_backup_time_daily: >-
       {{
         (minecraft_backup_time | to_datetime("%H:%M:%S"))

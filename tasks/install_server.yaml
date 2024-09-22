@@ -20,11 +20,14 @@
 - name: Debian Java package
   when: ansible_distribution == 'Debian'
   block:
-    - get_url:
+    - name: Debian Java package - download .deb
+      get_url:
         url: https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb
         dest: /tmp/jdk-21_linux-x64_bin.deb
+        mode: '0644'
 
-    - apt:
+    - name: Debian Java package - apt install
+      apt:
         deb: /tmp/jdk-21_linux-x64_bin.deb
 
 # ----- ----- ----- ----- -----
