@@ -1,8 +1,8 @@
 ---
 
 platforms:
-  - name: fedora-38
-    image: dokken/fedora-38
+  - name: fedora-40
+    image: dokken/fedora-40
     command: /lib/systemd/systemd
     dockerfile: ../_shared/Dockerfile.j2
     capabilities:
